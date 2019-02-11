@@ -4,7 +4,7 @@ secret_code = 8282
 balance = 80.00
 authorized = False
 options = "Please select an option:\n1.View Account Balance.\n2.Withdraw money.\n3.Change secret code.\n4.Exit.\n"
-withdraw_options = "Please select an option:\n1.20 nis.\n2.50 nis.\n3.Other.\n"
+withdraw_options = "Please select a sum to withdraw:\n1.20 nis.\n2.50 nis.\n3.Other.\n"
 clear = lambda: os.system('cls')
 # Asks for user input.
 # Returns true if the code the user's
@@ -28,12 +28,25 @@ def print_balance():
 def withdraw(amount):
     global balance
     if amount > balance:
-        print("You don't have enough money.")
+        print("You don't have enough money.\n")
     else:
         balance = balance - amount
 
 def withdraw_menu():
-    print("TODO: add options")
+    print(withdraw_options)
+    op = int(input())
+    clear()
+    if op == 1: 
+        withdraw(20) 
+    elif op == 2: 
+        withdraw(50)
+    elif op == 3:
+        print("Enter the amount you'd like to withdraw:") 
+        amount = float(input())
+        withdraw(amount)
+    else:
+        print("Invalid input.\nTry again:")
+
 
 def main_menu():
     global secret_code
