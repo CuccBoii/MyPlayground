@@ -2,18 +2,20 @@ import os
 
 secret_code = 8282
 balance = 80.00
-authorized = False
 options = "Please select an option:\n1.View Account Balance.\n2.Withdraw money.\n3.Change secret code.\n4.Exit.\n"
 withdraw_options = "Please select a sum to withdraw:\n1.20 nis.\n2.50 nis.\n3.Other.\n"
 clear = lambda: os.system('cls')
-# Asks for user input.
-# Returns true if the code the user's
-# input is the secret code. 
+
+# Asks for user input and checks if it 
+# matches the secret code. You can only
+# get out of this method when you get 
+# the secret code. 
 def auth():
     input_code = ""
     while input_code != str(secret_code):
         print("Input secret code:")
         input_code = input()
+        clear()
         if input_code == str(secret_code):
             print("Authorization Succesful\n")
         else:
@@ -21,10 +23,15 @@ def auth():
     clear()
 
 
+# Prints the current balance
 def print_balance():
     print("Balance: " + str(balance) + "\n")
 
 
+# Input: float/integer as an amount to withdraw
+# Checks if there is enough money in the account
+# for the requested withdraw. If there is, withdraws
+# it. Otherwise prints a message.
 def withdraw(amount):
     global balance
     if amount > balance:
@@ -32,6 +39,9 @@ def withdraw(amount):
     else:
         balance = balance - amount
 
+# Prints the withdraw menu and gets an input
+# from the user. Lets the user choose between
+# withdrawing 20, 50, or a custom amount.
 def withdraw_menu():
     print(withdraw_options)
     op = int(input())
@@ -47,7 +57,11 @@ def withdraw_menu():
     else:
         print("Invalid input.\nTry again:")
 
-
+# Lets the user pick between 4 main 
+# operations: viewing account balance,
+# withdrawing money, changing the secret code,
+# and exiting the program. Authorizes the user 
+# for every operation except exiting the program.
 def main_menu():
     global secret_code
     keep_running = True
@@ -72,7 +86,8 @@ def main_menu():
             print("Invalid input.\nTry again:")
 
 
-
+# Authorizes the user for the first time
+# Calls the main menu function.
 def main():
     auth()
     main_menu()
