@@ -6,10 +6,17 @@ def sumListOneByOne():
     while str(num) != "stop":
         listOfNums.append(int(num))
         num = input()
-    return sum(listOfNums)
+    print("\nSum is: "+ str(sum(listOfNums))+"\n")
 
+
+def sumListAllinOne():
+    separator = ","
+    mylist = map(int, input("Enter a list of numbers delimited by commas.\n").split(separator)) 
+    print("The sum of numbers is: "+str(sum(mylist)))
+    
 
 def main():
-    print("\nSum is: "+ str(sumListOneByOne())+"\n")
+    sumListOneByOne()
+    sumListAllinOne()
 
 main()
