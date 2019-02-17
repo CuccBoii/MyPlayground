@@ -47,6 +47,6 @@ def main():
     if winner == 0:
         print("No winners.")
     else:
-        print("Player "+ str()+" wins.")
+        print("Player "+ str(winner)+" wins.")
 
 main()
